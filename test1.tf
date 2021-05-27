@@ -1,12 +1,3 @@
-terraform {
-    required_providers {
-      aws = {
-        source = "hashicorp/aws"
-        version = "~> 3.27"
-      }
-    }
-}
-
 provider "aws" {
     profile = "terraform"
     region = "us-east-2"
@@ -14,7 +5,6 @@ provider "aws" {
 
 resource "aws_instance" "web" {
      ami = "ami-00399ec92321828f5"
-     #key_name = "devopstraining.pem"
      instance_type = "t2.micro"
      #user_data= "${file("install_apache.sh")}"
      vpc_security_group_ids = [aws_security_group.web_server.id]
